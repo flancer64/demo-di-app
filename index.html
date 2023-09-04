@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo app to run in the browser</title>
+</head>
+<script type="module">
+    import Container from 'https://unpkg.com/@teqfw/di';
+
+    // Create the objects container
+    /** @type {TeqFw_Di_Api_Container} */
+    const container = new Container();
+    container.setDebug(false); // set 'true' to check the container's logs
+
+    // Add path mapping for the sources (app itself and used library)
+    const url = new URL(location.href);
+    const root = url.pathname.replace('index.html', '');
+    const pathApp = url.origin + root + 'src';
+    const pathLib = 'https://unpkg.com/@flancer64/demo-di-lib/src';
+    const resolver = container.getResolver();
+    resolver.addNamespaceRoot('App_', pathApp);
+    resolver.addNamespaceRoot('Sample_Lib_', pathLib);
+
+    // Compose the application and run it
+    const app = await container.get('App_Main$');
+    app('Hello from the Web!');
+</script>
+<body>
+<div>Please see results in the browser console.</div>
+</body>
+</html>
