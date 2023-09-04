@@ -1,0 +1,37 @@
+{
+  "name": "@flancer64/demo-di-app",
+  "version": "0.1.0",
+  "description": "DI demo: main applications (web & nodejs).",
+  "keywords": [
+    "dependency injection",
+    "di",
+    "dynamic import",
+    "ecmascript 2015",
+    "es6 modules",
+    "teqfw",
+    "tequilla framework"
+  ],
+  "homepage": "https://github.com/flancer64/demo-di-app#readme",
+  "bugs": {
+    "url": "https://github.com/flancer64/demo-di-app/issues"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Alex Gusev",
+    "email": "alex@flancer64.com",
+    "url": "https://github.com/flancer64"
+  },
+  "main": "index.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flancer64/demo-di-app.git"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@flancer64/demo-di-lib": "latest",
+    "@teqfw/di": "latest"
+  }
+}

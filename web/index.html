@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description"
+          content="An application to demonstrate Dependency Injection container in action.">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+    <title>DI Demo</title>
+    <style>
+        #app {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            left: 0;
+            position: relative;
+            top: 0;
+            width: 100%;
+        }
+    </style>
+    <script type="module">
+        // launch TeqFW front app
+        self.addEventListener('load', async () => {
+            // VARS
+
+            // FUNCS
+
+            // MAIN
+            // regular import of DI container as ES6 module (see 'App_Back_Handler_Statics')
+            const {default: Container} = await import('/node_modules/@flancer64/demo-di-lib/src/Container.js');
+            const di = new Container();
+            // The object-key-to-import-path mapping for the back.
+            const map = {
+                'App_Front_Bootstrap': '/src/Front/Bootstrap.js',
+                'App_Front_Mod_Auth': '/src/Front/Mod/Auth.js',
+                'App_Front_Ui_Form': '/src/Front/Ui/Form.js',
+                'App_Shared_Defaults': '/src/Shared/Defaults.js',
+                'App_Shared_Dto_Auth_Request': '/src/Shared/Dto/Auth/Request.js',
+                'App_Shared_Dto_Auth_Response': '/src/Shared/Dto/Auth/Response.js',
+            };
+            di.getResolver().setMap(map);
+            // construct bootstrap object with DI container using 'objectKey' (is mapped in the resolver)
+            const bootstrap = await di.get('App_Front_Bootstrap');
+            // create Vue application and mount it to the DOM element
+            bootstrap('#app');
+        });
+    </script>
+</head>
+<body>
+<!-- application mounting point -->
+<div id="app">loading...</div>
+
+<!-- These resources are loaded after landing page is displayed -->
+<link rel="stylesheet" href="./styles.css">
+<script type="application/javascript" src="node_modules/vue/dist/vue.global.prod.js"></script>
+</body>
+</html>
