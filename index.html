@@ -5,7 +5,7 @@
     <title>Demo app to run in the browser</title>
 </head>
 <script type="module">
-    import Container from 'https://unpkg.com/@teqfw/di';
+    import Container from 'https://cdn.jsdelivr.net/npm/@teqfw/di@0.30.0/+esm';
 
     // Create the objects container
     /** @type {TeqFw_Di_Api_Container} */
@@ -15,14 +15,14 @@
     // Add path mapping for the sources (app itself and used library)
     const url = new URL(location.href);
     const root = url.pathname.replace('index.html', '');
-    const pathApp = url.origin + root + 'src';
-    const pathLib = 'https://unpkg.com/@flancer64/demo-di-lib/src';
+    const pathApp = url.origin + root + 'src';  // load app sources locally
+    const pathLib = 'https://cdn.jsdelivr.net/npm/@flancer64/demo-di-lib@0.2.0/+esm'; // load lib sources from CDN
     const resolver = container.getResolver();
     resolver.addNamespaceRoot('App_', pathApp);
     resolver.addNamespaceRoot('Sample_Lib_', pathLib);
 
-    // Compose the application and run it
-    const app = await container.get('App_Main$');
+    // Get the application from the container and run it
+    const app = await container.get('App_Main');
     app('Hello from the Web!');
 </script>
 <body>
