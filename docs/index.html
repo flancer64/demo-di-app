@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>The Web Sample for DI</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <script type="module">
     // import the whole library
@@ -14,11 +15,8 @@
     container.setDebug(false); // set 'true' to check the container's logs
 
     // Add path mapping for the sources (app itself and used library)
-    const url = new URL(location.href);
-    // to use locally (.../docs/index.html) and with GitHub Pages (.../index.html)
-    const root = url.pathname.replace('index.html', '').replace('docs/', '');
-    const pathApp = url.origin + root + 'src';  // load app sources locally
-    const pathLib = 'https://cdn.jsdelivr.net/npm/@flancer64/demo-di-lib@0.3.0/src'; // load lib sources from CDN
+    const pathApp = 'https://cdn.jsdelivr.net/npm/@flancer64/demo-di-app@0.2/src';
+    const pathLib = 'https://cdn.jsdelivr.net/npm/@flancer64/demo-di-lib@0.3/src';
     const resolver = container.getResolver();
     resolver.addNamespaceRoot('App_', pathApp);
     resolver.addNamespaceRoot('Sample_Lib_', pathLib);
@@ -30,9 +28,9 @@
 <body>
 <h1>The Web Sample for DI</h1>
 <ul>
-    <li><a href="https://github.com/flancer64/demo-di-app">@flancer64/demo-di-app</a>: the application.</li>
-    <li><a href="https://github.com/flancer64/demo-di-lib">@flancer64/demo-di-lib</a>: the used library.</li>
-    <li><a href="https://github.com/teqfw/di">@teqfw/di</a>: the Dependency Injection container.</li>
+    <li><a href="https://github.com/flancer64/demo-di-app">@flancer64/demo-di-app</a>: The application.</li>
+    <li><a href="https://github.com/flancer64/demo-di-lib">@flancer64/demo-di-lib</a>: The used library.</li>
+    <li><a href="https://github.com/teqfw/di">@teqfw/di</a>: The Dependency Injection container.</li>
 </ul>
 
 <h2>Running</h2>
@@ -42,6 +40,21 @@
 Sample Lib: Creating logger for 'Sample Lib'.
 Sample Lib: New instance of the service 'Sample_Lib_Service' is created for the app 'Sample Lib'.
 Sample App: Library service running with 'Hello from the Web!' param.
+</pre>
+
+<h2>Running as Node app</h2>
+
+<p>Clone, install, and run:</p>
+
+<pre>
+$ git clone https://github.com/flancer64/demo-di-app.git
+$ cd demo-di-app/
+$ npm i
+$ npm start
+...
+Sample Lib: Creating logger for 'Sample Lib'.
+Sample Lib: New instance of the service 'Sample_Lib_Service' is created for the app 'Sample Lib'.
+Sample App: Library service running with 'Hello from the Node.js!' param.
 </pre>
 
 <h2>Overview</h2>
