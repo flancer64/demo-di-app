@@ -11,6 +11,10 @@ another package ([@flancer64/demo-di-lib](https://github.com/flancer64/demo-di-l
 To load the sources, you just need to configure the resolver for both Node.js and browser code. All other code remains
 unchanged.
 
+## Live Demo
+
+See [here](https://flancer64.github.io/demo-di-app/).
+
 ## nodejs
 
 ```javascript
