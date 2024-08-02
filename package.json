@@ -1,6 +1,6 @@
 {
   "name": "@flancer64/demo-di-app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "@teqfw/di demo: main application (web & nodejs).",
   "keywords": [
     "dependency injection",

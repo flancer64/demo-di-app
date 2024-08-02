@@ -1,5 +1,10 @@
 # @flancer64/demo-di-app releases
 
+## 0.2.1
+
+* The GitHub Pages.
+* Improve the README.
+
 ## 0.2.0
 
 * Reflect the changes in depId of `@teqfw/di` v0.30.0.
